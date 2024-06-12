@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Form</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .header-bg {
+            background-color: #d3d3d3;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .form-container {
+            border: 1px solid #ced4da;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+        .submit-button-right {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+       <div class="container mt-5">
+        <div class="header-bg">
+            <h2 class="text-center">Payment Page</h2>
+        </div>
+        <div class="form-container mt-3">
+            <!-- Error message -->
+            <div id="error-message" class="alert alert-danger" role="alert" style="display: none;">
+                Some fields are missing
+            </div>
+            <form id="payment-form">
+                <div class="form-row align-items-center">
+                    <div class="col-md-4">
+                        <label class="sr-only" for="cardNumber">Card Number</label>
+                        <input type="text" class="form-control mb-2" id="cardNumber" placeholder="Card Number">
+                    </div>
+                    <div class="col-md-2">
+                        <label class="sr-only" for="cvc">CVC</label>
+                        <input type="text" class="form-control mb-2" id="cvc" placeholder="CVC">
+                    </div>
+                    <div class="col-md-2">
+                        <label class="sr-only" for="amount">Amount</label>
+                        <input type="text" class="form-control mb-2" id="amount" placeholder="Amount">
+                    </div>
+                </div>
+                <div class="form-row align-items-center">
+                    <div class="col-md-4">
+                        <label class="sr-only" for="firstName">First Name</label>
+                        <input type="text" class="form-control mb-2" id="firstName" placeholder="First Name">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="sr-only" for="lastName">Last Name</label>
+                        <input type="text" class="form-control mb-2" id="lastName" placeholder="Last Name">
+                    </div>
+                </div>
+                <div class="form-row align-items-center">
+                    <div class="col-md-4">
+                        <label class="sr-only" for="city">City</label>
+                        <input type="text" class="form-control mb-2" id="city" placeholder="City">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="sr-only" for="state">State</label>
+                        <select class="form-control mb-2" id="state">
+                            <option value="" disabled selected>Pick a state</option>
+                            <option value="AL">Alabama</option>
+                            <option value="AK">Alaska</option>
+                            <option value="AZ">Arizona</option>
+                            <option value="AR">Arkansas</option>
+                            <option value="CA">California</option>
+                            <!-- Add other states as needed -->
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="sr-only" for="zipCode">Zip Code</label>
+                        <input type="text" class="form-control mb-2" id="zipCode" placeholder="Zip Code">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12">
+                        <label for="comments">Comments/Notes</label>
+                        <textarea class="form-control mb-2" id="comments" rows="3" placeholder="Enter your comments or notes here"></textarea>
+                    </div>
+                </div>
+                <div class="form-row submit-button-right">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-secondary mb-2">Submit Payment</button>
+                    
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-secondary mb-2">Cancel</button>
+                    </div>
+                </div>
+                </div>
+            </form>
+            <div class="mt-4">
+                <h5>We accept:</h5>
+                <img src="https://via.placeholder.com/50x30?text=VISA" alt="VISA">
+                <img src="https://via.placeholder.com/50x30?text=AmEx" alt="American Express">
+                <img src="https://via.placeholder.com/50x30?text=MC" alt="Mastercard">
+                <img src="https://via.placeholder.com/50x30?text=Disc" alt="Discover">
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('payment-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var cardNumber = document.getElementById('cardNumber').value;
+            var cvc = document.getElementById('cvc').value;
+            var amount = document.getElementById('amount').value;
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var city = document.getElementById('city').value;
+            var state = document.getElementById('state').value;
+            var zipCode = document.getElementById('zipCode').value;
+            var comments = document.getElementById('comments').value;
+            if (!cardNumber || !cvc || !amount || !firstName || !lastName || !city || !state || !zipCode) {
+                document.getElementById('error-message').style.display = 'block';
+            } else {
+                document.getElementById('error-message').style.display = 'none';
+                // Process the payment
+                alert('Payment processed!');
+            }
+        });
+    </script>
+</body>
+</html>
