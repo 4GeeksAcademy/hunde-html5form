@@ -8,12 +8,21 @@
             background-color: #d3d3d3;
             padding: 10px;
             border-radius: 5px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
         }
         .form-container {
             border: 1px solid #ced4da;
             padding: 20px;
-            border-radius: 5px;
+            border-radius: 0 0 5px 5px;
             background-color: #f8f9fa;
+        }
+        .button-banner {
+            background-color: #d3d3d3;
+            padding: 10px;
+            border-radius: 5px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
         }
         .submit-button-right {
             text-align: right;
@@ -21,47 +30,47 @@
     </style>
 </head>
 <body>
-       <div class="container mt-5">
+    <div class="container mt-5">
         <div class="header-bg">
-            <h2 class="text-center">Payment Page</h2>
+            <h2 class="text-left">Payment Form</h2>
         </div>
-        <div class="form-container mt-3">
+        <div class="form-container mt-0">
             <!-- Error message -->
-            <div id="error-message" class="alert alert-danger" role="alert" style="display: none;">
+            <div id="error-message" class="alert alert-danger" role="alert">
                 Some fields are missing
             </div>
             <form id="payment-form">
                 <div class="form-row align-items-center">
                     <div class="col-md-4">
-                        <label class="sr-only" for="cardNumber">Card Number</label>
-                        <input type="text" class="form-control mb-2" id="cardNumber" placeholder="Card Number">
+                        <label for="cardNumber">Card Number</label>
+                        <input type="text" class="form-control mb-2" id="cardNumber" placeholder="XXX XXX XXX XXX">
                     </div>
                     <div class="col-md-2">
-                        <label class="sr-only" for="cvc">CVC</label>
+                        <label for="cvc">CVC</label>
                         <input type="text" class="form-control mb-2" id="cvc" placeholder="CVC">
                     </div>
                     <div class="col-md-2">
-                        <label class="sr-only" for="amount">Amount</label>
+                        <label for="amount">Amount</label>
                         <input type="text" class="form-control mb-2" id="amount" placeholder="Amount">
                     </div>
                 </div>
                 <div class="form-row align-items-center">
                     <div class="col-md-4">
-                        <label class="sr-only" for="firstName">First Name</label>
+                        <label for="firstName">First Name</label>
                         <input type="text" class="form-control mb-2" id="firstName" placeholder="First Name">
                     </div>
                     <div class="col-md-4">
-                        <label class="sr-only" for="lastName">Last Name</label>
+                        <label for="lastName">Last Name</label>
                         <input type="text" class="form-control mb-2" id="lastName" placeholder="Last Name">
                     </div>
                 </div>
                 <div class="form-row align-items-center">
                     <div class="col-md-4">
-                        <label class="sr-only" for="city">City</label>
+                        <label for="city">City</label>
                         <input type="text" class="form-control mb-2" id="city" placeholder="City">
                     </div>
                     <div class="col-md-3">
-                        <label class="sr-only" for="state">State</label>
+                        <label for="state">State</label>
                         <select class="form-control mb-2" id="state">
                             <option value="" disabled selected>Pick a state</option>
                             <option value="AL">Alabama</option>
@@ -73,33 +82,54 @@
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <label class="sr-only" for="zipCode">Zip Code</label>
+                        <label for="zipCode">Zip Code</label>
                         <input type="text" class="form-control mb-2" id="zipCode" placeholder="Zip Code">
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="col-md-12">
+                <div class="form-row align-items-center">
+                    <div class="col-md-4">
+                        <label>We accept:</label>
+                        <div class="mb-2">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="paymentMethod" id="visa" value="VISA">
+                                <label class="form-check-label" for="visa">
+                                    <img src="https://via.placeholder.com/50x30?text=VISA" alt="VISA">
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="paymentMethod" id="amex" value="AmEx">
+                                <label class="form-check-label" for="amex">
+                                    <img src="https://via.placeholder.com/50x30?text=AmEx" alt="American Express">
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="paymentMethod" id="mc" value="MC">
+                                <label class="form-check-label" for="mc">
+                                    <img src="https://via.placeholder.com/50x30?text=MC" alt="Mastercard">
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="paymentMethod" id="disc" value="Disc">
+                                <label class="form-check-label" for="disc">
+                                    <img src="https://via.placeholder.com/50x30?text=Disc" alt="Discover">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
                         <label for="comments">Comments/Notes</label>
                         <textarea class="form-control mb-2" id="comments" rows="3" placeholder="Enter your comments or notes here"></textarea>
                     </div>
                 </div>
-                <div class="form-row submit-button-right">
-                    <div class="col-md-12">
-                        <button type="submit" class="btn btn-secondary mb-2">Submit Payment</button>
-                    
-                    <div class="col-md-12">
-                        <button type="submit" class="btn btn-secondary mb-2">Cancel</button>
+                <div class="button-banner mt-4">
+                    <div class="form-row submit-button-right">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary mb-2">Send</button>
+                            <button type="button" class="btn btn-secondary mb-2">Cancel</button>
+                        </div>
                     </div>
                 </div>
-                </div>
             </form>
-            <div class="mt-4">
-                <h5>We accept:</h5>
-                <img src="https://via.placeholder.com/50x30?text=VISA" alt="VISA">
-                <img src="https://via.placeholder.com/50x30?text=AmEx" alt="American Express">
-                <img src="https://via.placeholder.com/50x30?text=MC" alt="Mastercard">
-                <img src="https://via.placeholder.com/50x30?text=Disc" alt="Discover">
-            </div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
